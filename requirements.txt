@@ -1,0 +1,6 @@
+Django
+djangorestframework
+google-api-python-client
+oauth2client
+python-social-auth
+psycopg2
