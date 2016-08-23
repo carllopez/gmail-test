@@ -1,0 +1,20 @@
+<div [hidden]="!loading" class="loader"></div>
+<table [hidden]="loading" class="table table-striped">
+	<tr>
+   		<th>From</th>
+   		<th>Subject</th>
+	 </tr>
+	 <tr *ngFor="let hero of heroes">
+	 	<td>{{ hero.from }}</td>
+      	<td>{{ hero.subject }}</td>
+	 </tr>
+</table>
+
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

@@ -6,7 +6,7 @@ services:
     - "49153:5432"
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:

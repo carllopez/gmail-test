@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
+{% block extra_head %}
+  {% if user and not user.is_anonymous %}
+  <script>
+    System.import('app').catch(function(err){ console.error(err); });
+  </script>
+  {% endif %}
+{% endblock %}
+
 {% block main %}
  <div>
  <h1>Retrieving emails from google</h1>
@@ -11,18 +19,7 @@
      <li style="margin-bottom:10px;"> <!-- TODO: Move to the right -->
        <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
      </li>
-     <table class="table table-striped">
-     <tr>
-       <th>From</th>
-       <th>Subject</th>
-     </tr>
-     {% for message in messages %}
-     <tr>
-       <td>{{ message.from }}</td>
-       <td>{{ message.subject }}</td>
-     </tr>
-     {% endfor %}
-     </table>
+     <my-app>Loading...</my-app>
    {% else %}
      <li>
        <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
