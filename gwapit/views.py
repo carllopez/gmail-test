@@ -18,9 +18,7 @@ class ListEmails(APIView):
         """
         Return a list of user's emails
         """
-        from django.contrib.auth.models import User
-        user = User.objects.get(id=2)
-        user_social_auth = UserSocialAuth.objects.get(user=user)
+        user_social_auth = UserSocialAuth.objects.get(user=self.request.user)
         credentials = AccessTokenCredentials(user_social_auth.extra_data['access_token'],
             'my-user-agent/1.0')
         http = httplib2.Http()
